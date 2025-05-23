@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SilentsMod")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce3df69a46bf6aac078001a21fa85efdff3d1380")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+67fb680df8c49c38bb29b5123ecf58244879972f")]
 [assembly: System.Reflection.AssemblyProductAttribute("SilentsMod")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SilentsMod")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

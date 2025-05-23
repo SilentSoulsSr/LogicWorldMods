@@ -1,0 +1,120 @@
+###################
+# File ROM Module #
+###################
+FileROM8bit:
+    column: "Memory"
+    category: "Modules"
+    
+    # The cube size is set by the clientCode as the label is resized
+    prefab:
+        blocks:
+            -
+                scale: (8,1,2)
+                position: ( -0.5, 0, -0.5)
+                mesh: OriginCube
+        inputs:          
+# Address
+            -
+                position: (7.25, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (6.75, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (6.25, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (5.75, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (5.25, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (4.75, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (4.25, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (3.75, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (3.25, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (2.75, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (2.25, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (1.75, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (1.25, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (0.75, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (0.25, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (-0.25, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+# Reload from disk
+            -
+                position: (-0,5, 0.5, 0.5)
+                rotation: (0, 0, 90)
+                length: 0.6
+        outputs:
+            -
+                position: (0, 0.5, 1.5)
+                rotation: (90, 0, 0)
+            -
+                position: (1, 0.5, 1.5)
+                rotation: (90, 0, 0)
+            -
+                position: (2, 0.5, 1.5)
+                rotation: (90, 0, 0)
+            -
+                position: (3, 0.5, 1.5)
+                rotation: (90, 0, 0)
+            -
+                position: (4, 0.5, 1.5)
+                rotation: (90, 0, 0)
+            -
+                position: (5, 0.5, 1.5)
+                rotation: (90, 0, 0)
+            -
+                position: (6, 0.5, 1.5)
+                rotation: (90, 0, 0)
+            -
+                position: (7, 0.5, 1.5)
+                rotation: (90, 0, 0)
+
+    clientCode: SilentMemory.Client.ClientCode.FileROM8bit
+    logicCode: SilentMemory.Server.LogicCode.FileROM8bit
+    placingRules:
+        offsetDimensions: (8, 2)
+        defaultOffset: (0, 0)
+        gridPlacingDimensions: (8, 2)
+    codeInfoFloats:
+        - 1 # height    
+  

@@ -1,2 +1,1 @@
-# LogicWorldMods
-Mods for logic world
+# SilentMod
