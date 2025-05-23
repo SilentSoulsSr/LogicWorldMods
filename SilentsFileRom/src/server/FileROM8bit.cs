@@ -1,7 +1,7 @@
 ﻿using JimmysUnityUtilities;
 using LogicWorld.Server.Circuitry;
 
-namespace SilentMemory.Server.LogicCode
+namespace SilentsFileRom.Server.LogicCode
 {
     public class FileROM8bit : LogicComponent<FileROM8bit.IData>
     {

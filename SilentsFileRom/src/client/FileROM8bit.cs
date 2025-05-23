@@ -10,7 +10,7 @@ using LogicWorld.Rendering.Chunks;
 using LogicWorld.Rendering.Components;
 using UnityEngine;
 
-namespace SilentMemory.Client.ClientCode
+namespace SilentsFileRom.Client.ClientCode
 {
     public class FileROM8bit : ComponentClientCode<FileROM8bit.IData>, IColorableClientCode, IPressableButton, IComponentClientCode
     {

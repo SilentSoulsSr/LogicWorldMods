@@ -109,8 +109,8 @@ FileROM8bit:
                 position: (7, 0.5, 1.5)
                 rotation: (90, 0, 0)
 
-    clientCode: SilentMemory.Client.ClientCode.FileROM8bit
-    logicCode: SilentMemory.Server.LogicCode.FileROM8bit
+    clientCode: SilentsFileRom.Client.ClientCode.FileROM8bit
+    logicCode: SilentsFileRom.Server.LogicCode.FileROM8bit
     placingRules:
         offsetDimensions: (8, 2)
         defaultOffset: (0, 0)

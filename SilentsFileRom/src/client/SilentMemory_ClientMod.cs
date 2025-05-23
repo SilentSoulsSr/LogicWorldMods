@@ -1,9 +1,9 @@
 ﻿using JimmysUnityUtilities;
 using LogicAPI.Client;
 using LogicUI;
-namespace SilentMemory.Client
+namespace SilentsFileRom.Client
 {
-    public class SilentMemory_ClientMod : ClientMod
+    public class SilentsFileRom_ClientMod : ClientMod
     {
         protected override void Initialize()
         {
