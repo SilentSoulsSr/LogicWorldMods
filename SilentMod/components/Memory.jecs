@@ -80,7 +80,7 @@ FileROM8bit:
                 length: 0.6
 # Reload from disk
             -
-                position: (-0,5, 0.5, 0.5)
+                position: (-0.5, 0.5, -0.25)
                 rotation: (0, 0, 90)
                 length: 0.6
         outputs:

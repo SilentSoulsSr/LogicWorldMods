@@ -1,9 +1,4 @@
-﻿// #############################
-// Based on the HexasMemory mod.
-// #############################
-
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using JimmysUnityUtilities;
 using LogicWorld.Audio;
 using LogicWorld.ClientCode;
@@ -214,7 +209,7 @@ namespace SilentMemory.Client.ClientCode
                 if (string.IsNullOrEmpty(file))
                     return "Failed to load file.";
 
-                var data = File.ReadAllBytes(file);
+                var data = System.IO.File.ReadAllBytes(file);
 
                 System.Array.Resize(ref data, 65536);
                 System.Array.Copy(data, idata, 65536);

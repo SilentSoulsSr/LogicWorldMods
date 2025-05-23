@@ -1,7 +1,5 @@
 ﻿using JimmysUnityUtilities;
-using LogicAPI.Server.Components;
 using LogicWorld.Server.Circuitry;
-using System;
 
 namespace SilentMemory.Server.LogicCode
 {
@@ -22,8 +20,30 @@ namespace SilentMemory.Server.LogicCode
         }
         private static Color24 DefaultColor = new Color24(38, 38, 38);
 
+        private bool reload = false;
+
         protected override void DoLogicUpdate()
         {
+            if (Inputs[16].On)
+            {
+                if (reload != true)
+                {
+                    reload = true;
+
+                    string message = LoadFromFile(Data.LabelText, Data.Zdata);
+                    if (!string.IsNullOrEmpty(message))
+                        Logger.Info(message);
+                    else
+                        Logger.Info("Loaded file. " + Data.LabelText);
+                }
+
+                for (int i = 0; i < 8; i++)
+                    Outputs[i].On = false;
+
+                return;
+            }
+            reload = false;
+
             int address = 0;
             for (int i = 0; i < 16; i++)
                 address += Inputs[i].On ? 1 << i : 0;
@@ -53,6 +73,26 @@ namespace SilentMemory.Server.LogicCode
             base.Data.SizeZ = 2;
             base.Data.ZButtonDown = false;
             base.Data.Zdata = new byte[65536];
+        }
+        private string LoadFromFile(string istr, byte[] idata)
+        {
+            try
+            {
+                string file = istr?.Trim()?.Split('\n')?[0]?.Trim();
+                if (string.IsNullOrEmpty(file))
+                    return "Failed to load file.";
+
+                var data = System.IO.File.ReadAllBytes(file);
+
+                System.Array.Resize(ref data, 65536);
+                System.Array.Copy(data, idata, 65536);
+            }
+            catch (System.Exception ex)
+            {
+                return "Failed to load file" + ex.Message;
+            }
+
+            return null;
         }
     }
 }
