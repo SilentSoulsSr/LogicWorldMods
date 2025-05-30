@@ -1,12 +1,10 @@
-﻿using JimmysUnityUtilities;
-using LogicAPI.Client;
-using LogicUI;
-namespace SilentsFileRom.Client
+﻿using LogicAPI.Client;
+
+namespace SilentsFileRom.Client;
+
+public class SilentsFileRom_ClientMod : ClientMod
 {
-    public class SilentsFileRom_ClientMod : ClientMod
+    protected override void Initialize()
     {
-        protected override void Initialize()
-        {
-        }
     }
 }

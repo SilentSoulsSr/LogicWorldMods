@@ -1,12 +1,11 @@
 ﻿using LogicAPI.Server;
 
-namespace SilentsFileRom.Server
+namespace SilentsFileRom.Server;
+
+public class SilentsFileRom_ServerMod : ServerMod
 {
-    public class SilentsFileRom_ServerMod : ServerMod
+    protected override void Initialize()
     {
-        protected override void Initialize()
-        {            
-            Logger.Info("SilentsFileRom Initialized");
-        }
+        Logger.Info("SilentsFileRom Initialized");
     }
 }

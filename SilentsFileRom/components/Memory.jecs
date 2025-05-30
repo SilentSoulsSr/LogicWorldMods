@@ -14,99 +14,102 @@ FileROM8bit:
                 mesh: OriginCube
         inputs:          
 # Address
+
+# 33,66,99
+# 0 16 49 85
             -
-                position: (7.25, 0.5, -0.5)
+                position: (6.333, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (6.75, 0.5, -0.5)
+                position: (6.0, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (6.25, 0.5, -0.5)
+                position: (5.666, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (5.75, 0.5, -0.5)
+                position: (5.333, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (5.25, 0.5, -0.5)
+                position: (5.0, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (4.75, 0.5, -0.5)
+                position: (4.666, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (4.25, 0.5, -0.5)
+                position: (4.333, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (3.75, 0.5, -0.5)
+                position: (4.0, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (3.25, 0.5, -0.5)
+                position: (3.333, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (2.75, 0.5, -0.5)
+                position: (3.0, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (2.25, 0.5, -0.5)
+                position: (2.666, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (1.75, 0.5, -0.5)
+                position: (2.333, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (1.25, 0.5, -0.5)
+                position: (2.0, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (0.75, 0.5, -0.5)
+                position: (1.666, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (0.25, 0.5, -0.5)
+                position: (1.333, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (-0.25, 0.5, -0.5)
+                position: (1.0, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
 # Reload from disk
             -
-                position: (-0.5, 0.5, -0.25)
-                rotation: (0, 0, 90)
+                position: (0.0, 0.5, -0.5)
+                rotation: (-90, 0, 00)
                 length: 0.6
         outputs:
             -
-                position: (0, 0.5, 1.5)
+                position: (6.25, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (1, 0.5, 1.5)
+                position: (5.65, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (2, 0.5, 1.5)
+                position: (5.05, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (3, 0.5, 1.5)
+                position: (4.45, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (4, 0.5, 1.5)
+                position: (3.85, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (5, 0.5, 1.5)
+                position: (3.25, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (6, 0.5, 1.5)
+                position: (2.65, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (7, 0.5, 1.5)
+                position: (2.05, 0.5, 1.5)
                 rotation: (90, 0, 0)
 
     clientCode: SilentsFileRom.Client.ClientCode.FileROM8bit
@@ -117,4 +120,3 @@ FileROM8bit:
         gridPlacingDimensions: (8, 2)
     codeInfoFloats:
         - 1 # height    
-  
