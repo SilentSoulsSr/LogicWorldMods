@@ -14,9 +14,6 @@ FileROM8bit:
                 mesh: OriginCube
         inputs:          
 # Address
-
-# 33,66,99
-# 0 16 49 85
             -
                 position: (6.333, 0.5, -0.5)
                 rotation: (-90, 0, 0)
@@ -110,6 +107,10 @@ FileROM8bit:
                 rotation: (90, 0, 0)
             -
                 position: (2.05, 0.5, 1.5)
+                rotation: (90, 0, 0)
+# EOF 
+            -
+                position: (1.0, 0.5, 1.5)
                 rotation: (90, 0, 0)
 
     clientCode: SilentsFileRom.Client.ClientCode.FileROM8bit

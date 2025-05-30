@@ -1,27 +1,21 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
 namespace SilentsMod.Shared;
 
 public static class FileLoader
 {
-    public static string LoadFromFile(string istr, byte[] idata)
+    public static byte[] LoadFromFile(string text)
     {
         try
         {
-            string file = istr?.Trim()?.Split('\n')?[0]?.Trim();
+            string file = text?.Trim()?.Split('\n')?[0]?.Trim();
             if (string.IsNullOrEmpty(file))
-                return "Failed to load file.";
+                return null;
 
-            var data = File.ReadAllBytes(file);
-
-            Array.Resize(ref data, 65536);
-            Array.Copy(data, idata, 65536);
+            byte[] data = File.ReadAllBytes(file);
+            return data;
         }
-        catch (Exception ex)
-        {
-            return "Failed to load file" + ex.Message;
-        }
+        catch { }
 
         return null;
     }

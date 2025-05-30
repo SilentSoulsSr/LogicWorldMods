@@ -2,13 +2,9 @@
 
 ### Silents file ROM
 
-This mod is based on the "https://github.com/Shadow55AA/LogicWorldMods/tree/main/HexasMemory"
-
-16 bit addressable ROM loader.
-Add the filename in the text window, and use the reset button to load it.
-the side pin is an alternative to (re)loading the file.
-
-The component outputs 8bits at a time, and can hold 65536 bytes in total.
+Add the filename in the text window, to load the file use the reset peg on the left
+The component outputs 8bits at a time, and an EOF if the address goes past the data size
+It can  address 16 bit. so do not make the files to large
 
 ### Mod install
 Just copy the SilentsFileRom to the "\Logic World\GameData\" folder.

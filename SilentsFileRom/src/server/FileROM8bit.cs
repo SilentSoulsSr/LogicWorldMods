@@ -16,26 +16,38 @@ public class FileROM8bit : LogicComponent<FileROM8bit.IData>
         int VerticalAlignment { get; set; }
         int SizeX { get; set; }
         int SizeZ { get; set; }
-        bool ZButtonDown { get; set; }
-        byte[] Zdata { get; set; }
+        byte[] FileData { get; set; }
     }
-    private static Color24 DefaultColor = new Color24(38, 38, 38);
 
-    private bool reload = false;
+    private bool _fileLoaded = false;
 
     protected override void DoLogicUpdate()
     {
+        if (Inputs.Count < 17)
+        {
+            Logger.Info("Missing input pins (" + Inputs.Count.ToString() + " / 17)");
+            return;
+        }
+        if (Outputs.Count < 9)
+        {
+            Logger.Info("Missing output pins (" + Outputs.Count.ToString() + " / 9)");
+            return;
+        }
+
         if (Inputs[16].On)
         {
-            if (reload != true)
+            if (_fileLoaded != true)
             {
-                reload = true;
+                _fileLoaded = true;
 
-                string message = FileLoader.LoadFromFile(Data.LabelText, Data.Zdata);
-                if (!string.IsNullOrEmpty(message))
-                    Logger.Info(message);
+                byte[] data = FileLoader.LoadFromFile(Data.LabelText);
+                if (data == null)
+                    Logger.Info("Failed to load file '" + Data.LabelText);
                 else
+                {
+                    Data.FileData = data;
                     Logger.Info("Loaded file. " + Data.LabelText);
+                }
             }
 
             for (int i = 0; i < 8; i++)
@@ -43,16 +55,20 @@ public class FileROM8bit : LogicComponent<FileROM8bit.IData>
 
             return;
         }
-        reload = false;
 
+        _fileLoaded = false;
+
+        // Handle data 
         int address = 0;
         for (int i = 0; i < 16; i++)
             address += Inputs[i].On ? 1 << i : 0;
 
         byte output = 0;
-        if (ComponentData.CustomData != null)
-            output = Data.Zdata[address];
+        bool eof = address >= Data.FileData.Length;
+        if (ComponentData.CustomData != null && !eof)
+            output = Data.FileData[address];
 
+        Outputs[8].On = eof;
         for (int i = 0; i < 8; i++)
             Outputs[i].On = (output & (1 << i)) > 0;
     }
@@ -64,15 +80,14 @@ public class FileROM8bit : LogicComponent<FileROM8bit.IData>
 
     protected override void SetDataDefaultValues()
     {
-        base.Data.LabelText = "Filename here";
-        base.Data.LabelFontSizeMax = 0.8f;
-        base.Data.LabelColor = DefaultColor;
-        base.Data.LabelMonospace = false;
-        base.Data.HorizontalAlignment = 1;
-        base.Data.VerticalAlignment = 1;
-        base.Data.SizeX = 8;
-        base.Data.SizeZ = 2;
-        base.Data.ZButtonDown = false;
-        base.Data.Zdata = new byte[65536];
+        Data.LabelText = "Filename here";
+        Data.LabelFontSizeMax = 0.8f;
+        Data.LabelColor = new Color24(38, 38, 38);
+        Data.LabelMonospace = false;
+        Data.HorizontalAlignment = 1;
+        Data.VerticalAlignment = 1;
+        Data.SizeX = 8;
+        Data.SizeZ = 2;
+        Data.FileData = new byte[0];
     }
 }
