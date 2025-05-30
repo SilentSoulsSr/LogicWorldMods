@@ -1,0 +1,30 @@
+###################
+# Repeater Module #
+###################
+
+Repeater:
+    column: "Logic"
+
+    prefab:
+        blocks:
+            -
+                scale: (1, 1, 1)
+        inputs:
+            -
+                position: (-0.25, 0.5, -0.25)
+                rotation: (-90, 0, 0)
+#   Reset
+            -
+                position: (0.25, 0.5, -0.25)
+                rotation: (-90, 0, 0)
+        outputs:
+            -
+                position: (0, 0.5, 0.5)
+                rotation: (90, 0, 0)
+
+    logicCode: SilentsRepeater.Server.LogicCode.Repeater
+    clientCode: SilentsRepeater.Client.ClientCode.Repeater
+    placingRules:
+        gridPlacingDimensions: (1, 2)
+    codeInfoFloats:
+        - 1 # height   
