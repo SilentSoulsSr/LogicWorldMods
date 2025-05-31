@@ -71,6 +71,15 @@ public class Repeater : LogicComponent<Repeater.IData>
 
         // Handle previous triggers
         bool trigger = false;
+
+        // Due to the inherit delay of the component, do this bedore the subtracting
+        if (Inputs[0].On)
+        {
+            byte valueToSet = (byte)Data.DelayTicks;
+            if (!_delays.Contains(valueToSet))
+                _delays.Add((byte)Data.DelayTicks);
+        }
+
         if (_delays.Count > 0)
         {
             _delays = _delays.Select(item => (byte)(item - 1)).ToList();
@@ -83,15 +92,6 @@ public class Repeater : LogicComponent<Repeater.IData>
 
         // Set output on trigger value
         Outputs[0].On = trigger;
-
-        // Add trigger if input 0 is on
-        if (Inputs[0].On)
-        {
-            byte valueToSet = (byte)Data.DelayTicks;
-            if (!_delays.Contains(valueToSet))
-                _delays.Add((byte)Data.DelayTicks);
-        }
-
         Data.Delays = _delays.ToArray();
     }
 
