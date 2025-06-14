@@ -1,3 +1,4 @@
 ﻿ComponentColumn.Memory      : "Memory"
 ComponentCategory.Modules   : "Modules"
 SilentsFileRom.FileROM8bit    : "File ROM"
+SilentsFileRom.FileRAM8bit    : "File RAM"
