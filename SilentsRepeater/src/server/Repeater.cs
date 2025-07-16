@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using JimmysUnityUtilities;
+﻿using JimmysUnityUtilities;
 using LogicWorld.Server.Circuitry;
 
 namespace SilentsRepeater.Server.LogicCode;
@@ -22,25 +20,59 @@ public class Repeater : LogicComponent<Repeater.IData>
         byte[] Delays { get; set; }
     }
 
+    private bool[] _delays = new bool[10];
+    private int _delayTicks = 10;
+    private int _tick = 0;
+
     private string _previousText = "";
     private bool _isValid = false;
-    private List<byte> _delays = null;
+    private bool _textChanged = false;
 
     protected override void DoLogicUpdate()
     {
-        if (_delays == null)
-            _delays = Data.Delays.ToList();
+        if (_textChanged)
+        {
+            _textChanged = false;
+            HandleTextChange();
+        }
 
+        if (!_isValid)
+        {
+            Outputs[0].On = false;
+            return;
+        }
+
+        // reset
+        if (Inputs[1].On)
+        {
+            for (int i = 0; i < _delayTicks; i++)
+                _delays[i] = false;
+
+            _tick = 0;
+        }
+
+        // Handle previous triggers
+        if (Inputs[0].On)
+            _delays[_tick] = true;
+
+        _tick = (_tick + 1) % _delayTicks; // rotate
+
+        // Set output on trigger value
+        Outputs[0].On = _delays[_tick];
+        _delays[_tick] = false;
+
+        QueueLogicUpdate();
+    }
+
+    private void HandleTextChange()
+    {
         if (Data.LabelText != _previousText)
         {
             _isValid = false;
-            Data.Delays = [];
 
             var txt = Data.LabelText;
             _previousText = txt;
-
             txt = txt.Trim();
-
             if (int.TryParse(txt, out int result))
             {
                 Logger.Info("Valid " + _previousText);
@@ -52,51 +84,19 @@ public class Repeater : LogicComponent<Repeater.IData>
                 if (result < 1)
                     result = 1;
 
+                _delayTicks = result;
+                _delays = new bool[_delayTicks];
+
                 Data.LabelText = result.ToString();
-                Data.DelayTicks = result;
             }
             else
                 Logger.Info("!Valid " + _previousText);
         }
-
-        if (!_isValid)
-        {
-            Outputs[0].On = false;
-            return;
-        }
-
-        // reset
-        if (Inputs[1].On)
-            _delays.Clear();
-
-        // Handle previous triggers
-        bool trigger = false;
-
-        // Due to the inherit delay of the component, do this bedore the subtracting
-        if (Inputs[0].On)
-        {
-            byte valueToSet = (byte)Data.DelayTicks;
-            if (!_delays.Contains(valueToSet))
-                _delays.Add((byte)Data.DelayTicks);
-        }
-
-        if (_delays.Count > 0)
-        {
-            _delays = _delays.Select(item => (byte)(item - 1)).ToList();
-
-            byte value = _delays.Min();
-            trigger = (value <= 0);
-            if (trigger)
-                _delays.Remove(value);
-        }
-
-        // Set output on trigger value
-        Outputs[0].On = trigger;
-        Data.Delays = _delays.ToArray();
     }
 
     protected override void OnCustomDataUpdated()
     {
+        _textChanged = true;
         QueueLogicUpdate();
     }
 
@@ -111,7 +111,9 @@ public class Repeater : LogicComponent<Repeater.IData>
         Data.SizeX = 1;
         Data.SizeZ = 1;
 
-        Data.DelayTicks = 10;
-        Data.Delays = [];
+
+        Data.DelayTicks = 0;
+        Data.Delays = [0];
+        _textChanged = true;
     }
 }

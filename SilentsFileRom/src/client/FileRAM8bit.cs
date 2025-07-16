@@ -42,12 +42,12 @@ public class FileRAM8bit : ComponentClientCode<FileRAM8bit.IData>, IColorableCli
         set { Data.LabelColor = value; }
     }
 
-    protected override void DataUpdate()
-    {
-        _label.DataUpdate(base.Data);
-        if (_labelTransform != null)
-            _labelTransform.sizeDelta = new Vector2(8, 2) * 0.3f;
-    }
+    //protected override void DataUpdate()
+    //{
+        //_label.DataUpdate(base.Data);
+        //if (_labelTransform != null)
+        //    _labelTransform.sizeDelta = new Vector2(8, 2) * 0.3f;
+    //}
 
     protected override void SetDataDefaultValues()
     {
@@ -59,7 +59,7 @@ public class FileRAM8bit : ComponentClientCode<FileRAM8bit.IData>, IColorableCli
         Data.VerticalAlignment = LabelAlignmentVertical.Middle;
         Data.SizeX = 8;
         Data.SizeZ = 2;
-        Data.FileData = new byte[65536];
+        Data.FileData = new byte[0];
     }
 
     protected override IDecoration[] GenerateDecorations(Transform parentToCreateDecorationsUnder)

@@ -12,6 +12,9 @@ EOF then 8 bits (most right one is the least significant)
 on the bottom
 Reset, then 16 address pins (right one is the least significant)
 
+#### HEX an MC
+File extensions "Hex and MC" will result in parsing the file
+
 ### Mod install
 Just copy the SilentsFileRom to the "\Logic World\GameData\" folder.
 To support older versions of the game, simply rename manifest.jecs to manifest.succ, and "languages\English\English_components.jecs" to "languages\English\English_components.succ"

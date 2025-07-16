@@ -5,7 +5,6 @@ using LogicWorld.Interfaces;
 using LogicWorld.References;
 using LogicWorld.Rendering.Chunks;
 using LogicWorld.Rendering.Components;
-using TMPro;
 using UnityEngine;
 
 namespace SilentsRepeater.Client.ClientCode;
@@ -49,14 +48,11 @@ public class Repeater : ComponentClientCode<Repeater.IData>, IColorableClientCod
             _labelTransform.sizeDelta = new Vector2(1, 1) * 0.3f;
     }
 
-    // Ensure it gets set on load
-
     public int DelayTicks
     {
         get { return Data.DelayTicks; }
         set { Data.DelayTicks = value; }
     }
-
     protected override void SetDataDefaultValues()
     {
         Data.LabelText = "10";
@@ -68,7 +64,7 @@ public class Repeater : ComponentClientCode<Repeater.IData>, IColorableClientCod
         Data.SizeX = 1;
         Data.SizeZ = 1;
 
-        Data.DelayTicks = 10;
+        Data.DelayTicks = 0;
         Data.Delays = [];
     }
 

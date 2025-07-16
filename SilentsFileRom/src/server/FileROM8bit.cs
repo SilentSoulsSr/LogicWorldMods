@@ -24,7 +24,7 @@ public class FileROM8bit : LogicComponent<FileROM8bit.IData>
         byte[] FileData { get; set; }
     }
 
-    private bool _fileLoaded = false;
+    private byte[] _fileData = null;
 
     const int PegInAddress = 0;
     const int PegInFileLoad = 16;
@@ -45,8 +45,9 @@ public class FileROM8bit : LogicComponent<FileROM8bit.IData>
         foreach (var peg in _pressed)
             _pressed[peg.Key].SetOn(Inputs[peg.Key].On);
 
-        if (_pressed[PegInFileLoad].Down || Data.LoadFile)
+        if (_fileData == null || _pressed[PegInFileLoad].Down || Data.LoadFile)
         {
+            _fileData = new byte[0];
             Data.LoadFile = false;
 
             string[] files = FileLoader.GetFiles(Data.LabelText);
@@ -64,7 +65,7 @@ public class FileROM8bit : LogicComponent<FileROM8bit.IData>
             else
             {
                 Data.FileSuccess = true;
-                Data.FileData = data;
+                _fileData = data;
                 Logger.Info("Loaded file. " + Data.LabelText);
             }
 
@@ -80,9 +81,9 @@ public class FileROM8bit : LogicComponent<FileROM8bit.IData>
             address += Inputs[i + PegInAddress].On ? 1 << i : 0;
 
         byte output = 0;
-        bool eof = address >= Data.FileData.Length;
+        bool eof = address >= _fileData.Length;
         if (ComponentData.CustomData != null && !eof)
-            output = Data.FileData[address];
+            output = _fileData[address];
 
         Outputs[PegOutEOF].On = eof;
         for (int i = 0; i < 8; i++)

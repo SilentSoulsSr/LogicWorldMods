@@ -3,7 +3,8 @@
 ###################
 
 Repeater:
-    column: "Logic"
+    column: "Memory"
+    category: "Modules"
 
     prefab:
         blocks:

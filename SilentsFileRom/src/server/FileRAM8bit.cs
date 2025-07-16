@@ -22,6 +22,8 @@ public class FileRAM8bit : LogicComponent<FileRAM8bit.IData>
         byte[] FileData { get; set; }
     }
 
+    private byte[] _fileData = new byte[65536];
+
     const int PegInAddress = 0;
     const int PegInData = 16;
     const int PegInWriteMemory = 24;
@@ -57,7 +59,7 @@ public class FileRAM8bit : LogicComponent<FileRAM8bit.IData>
         if (isValid)
         {
             if (_pressed[PegInReset].Down)
-                Data.FileData = new byte[65536];
+                _fileData = new byte[65536];
 
             if (_pressed[PegInFileLoad].Down)
             {
@@ -69,8 +71,8 @@ public class FileRAM8bit : LogicComponent<FileRAM8bit.IData>
                     Logger.Info("File to large " + files.First());
                 else
                 {
-                    Data.FileData = new byte[65536];
-                    Array.Copy(data, Data.FileData, data.Length);
+                    _fileData = new byte[65536];
+                    Array.Copy(data, _fileData, data.Length);
                     Logger.Info("Loaded file. " + files.First());
                 }
 
@@ -80,7 +82,7 @@ public class FileRAM8bit : LogicComponent<FileRAM8bit.IData>
             if (_pressed[PegInFileSave].Down)
             {
                 string[] files = FileLoader.GetFiles(Data.LabelText);
-                FileLoader.SaveToFile(files.Last(), Data.FileData);
+                FileLoader.SaveToFile(files.Last(), _fileData);
                 Logger.Info("Saved to file. " + files.Last());
 
                 issaved = true;
@@ -91,7 +93,7 @@ public class FileRAM8bit : LogicComponent<FileRAM8bit.IData>
             address += Inputs[i + PegInAddress].On ? 1 << i : 0;
 
         if (ComponentData.CustomData != null)
-            output = Data.FileData[address];
+            output = _fileData[address];
 
         if (isValid && Inputs[PegInWriteMemory].On && ComponentData.CustomData != null)
         {
@@ -100,7 +102,7 @@ public class FileRAM8bit : LogicComponent<FileRAM8bit.IData>
                 value += Inputs[i + PegInData].On ? 1 << i : 0;
 
             output = (byte)value;
-            Data.FileData[address] = output;
+            _fileData[address] = output;
         }
 
 
@@ -127,6 +129,6 @@ public class FileRAM8bit : LogicComponent<FileRAM8bit.IData>
         Data.VerticalAlignment = 1;
         Data.SizeX = 8;
         Data.SizeZ = 2;
-        Data.FileData = new byte[65536];
+        Data.FileData = new byte[0];
     }
 }
