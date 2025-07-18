@@ -20,7 +20,7 @@ public class FileRAM8bit : ComponentClientCode<FileRAM8bit.IData>, IColorableCli
 
     private LabelTextManager _label;
     private RectTransform _labelTransform;
-    private float Height => 1.5f;
+    private float Height => 1.3f;
     string IColorableClientCode.ColorsFileKey => "LabelText";
     float IColorableClientCode.MinColorValue => 0f;
 
@@ -42,12 +42,10 @@ public class FileRAM8bit : ComponentClientCode<FileRAM8bit.IData>, IColorableCli
         set { Data.LabelColor = value; }
     }
 
-    //protected override void DataUpdate()
-    //{
-        //_label.DataUpdate(base.Data);
-        //if (_labelTransform != null)
-        //    _labelTransform.sizeDelta = new Vector2(8, 2) * 0.3f;
-    //}
+    protected override void DataUpdate()
+    {
+        _label.DataUpdate(base.Data);
+    }
 
     protected override void SetDataDefaultValues()
     {
@@ -73,7 +71,7 @@ public class FileRAM8bit : ComponentClientCode<FileRAM8bit.IData>, IColorableCli
         [
             new Decoration
             {
-                LocalPosition = new Vector3(-0.5f, Height + 0.01f, -0.5f) * 0.3f,
+                LocalPosition = new Vector3(-0.5f, Height + 0.001f, -0.5f) * 0.3f,
                 LocalRotation = Quaternion.Euler(90f, 0f, 0f),
                 DecorationObject = gameObject,
                 IncludeInModels = true

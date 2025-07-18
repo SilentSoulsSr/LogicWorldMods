@@ -144,7 +144,7 @@ public class FileROM8bit : ComponentClientCode<FileROM8bit.IData>, IColorableCli
         [
             new Decoration
             {
-                LocalPosition = new Vector3(-0.5f, Height + 0.01f, 0.5f) * 0.3f,
+                LocalPosition = new Vector3(-0.5f, Height + 0.001f, 0.5f) * 0.3f,
                 LocalRotation = Quaternion.Euler(90f, 0f, 0f),
                 DecorationObject = gameObject,
                 IncludeInModels = true
