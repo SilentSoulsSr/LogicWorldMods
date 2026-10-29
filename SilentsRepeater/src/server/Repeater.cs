@@ -20,6 +20,7 @@ public class Repeater : LogicComponent<Repeater.IData>
         byte[] Delays { get; set; }
     }
 
+    private Color24 textColor = new Color24(118, 118, 118);
     private bool[] _delays = new bool[10];
     private int _delayTicks = 10;
     private int _tick = 0;
@@ -47,13 +48,11 @@ public class Repeater : LogicComponent<Repeater.IData>
         {
             for (int i = 0; i < _delayTicks; i++)
                 _delays[i] = false;
-
-            _tick = 0;
         }
 
         // Handle previous triggers
         if (Inputs[0].On)
-            _delays[_tick] = true;
+            _delays[_tick] = true; 
 
         _tick = (_tick + 1) % _delayTicks; // rotate
 
@@ -104,7 +103,7 @@ public class Repeater : LogicComponent<Repeater.IData>
     {
         Data.LabelText = "10";
         Data.LabelFontSizeMax = 0.8f;
-        Data.LabelColor = new Color24(38, 38, 38);
+        Data.LabelColor = textColor;
         Data.LabelMonospace = false;
         Data.HorizontalAlignment = 1;
         Data.VerticalAlignment = 1;

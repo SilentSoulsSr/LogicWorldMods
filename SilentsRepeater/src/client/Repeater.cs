@@ -19,9 +19,16 @@ public class Repeater : ComponentClientCode<Repeater.IData>, IColorableClientCod
 
     private LabelTextManager _label;
     private RectTransform _labelTransform;
-    private float Height => base.CodeInfoFloats[0];
+
+    private float textX => base.CodeInfoFloats[0];
+    private float textY => base.CodeInfoFloats[1];
+    private float textZ => base.CodeInfoFloats[2];
+
+    private Color24 textColor = new Color24(118, 118, 118);
+
     string IColorableClientCode.ColorsFileKey => "LabelText";
     float IColorableClientCode.MinColorValue => 0f;
+
 
     public int SizeX
     {
@@ -53,11 +60,12 @@ public class Repeater : ComponentClientCode<Repeater.IData>, IColorableClientCod
         get { return Data.DelayTicks; }
         set { Data.DelayTicks = value; }
     }
+
     protected override void SetDataDefaultValues()
     {
         Data.LabelText = "10";
         Data.LabelFontSizeMax = 0.8f;
-        Data.LabelColor = new Color24(38, 38, 38);
+        Data.LabelColor = textColor;
         Data.LabelMonospace = false;
         Data.HorizontalAlignment = LabelAlignmentHorizontal.Center;
         Data.VerticalAlignment = LabelAlignmentVertical.Middle;
@@ -79,7 +87,7 @@ public class Repeater : ComponentClientCode<Repeater.IData>, IColorableClientCod
         [
             new Decoration
             {
-                LocalPosition = new Vector3(-0.5f, Height + 0.01f, -0.5f) * 0.3f,
+                LocalPosition = new Vector3(textX, textY + 0.001f, textZ) * 0.3f,
                 LocalRotation = Quaternion.Euler(90f, 0f, 0f),
                 DecorationObject = gameObject,
                 IncludeInModels = true

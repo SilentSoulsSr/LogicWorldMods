@@ -15,6 +15,18 @@ FileROM8bit:
         inputs:          
 # Address
             -
+                position: (7.333, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (7.0, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (6.666, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
                 position: (6.333, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
@@ -35,15 +47,15 @@ FileROM8bit:
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
-                position: (4.666, 0.5, -0.5)
-                rotation: (-90, 0, 0)
-                length: 0.6
-            -
                 position: (4.333, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
                 position: (4.0, 0.5, -0.5)
+                rotation: (-90, 0, 0)
+                length: 0.6
+            -
+                position: (3.666, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
             -
@@ -66,18 +78,6 @@ FileROM8bit:
                 position: (2.0, 0.5, -0.5)
                 rotation: (-90, 0, 0)
                 length: 0.6
-            -
-                position: (1.666, 0.5, -0.5)
-                rotation: (-90, 0, 0)
-                length: 0.6
-            -
-                position: (1.333, 0.5, -0.5)
-                rotation: (-90, 0, 0)
-                length: 0.6
-            -
-                position: (1.0, 0.5, -0.5)
-                rotation: (-90, 0, 0)
-                length: 0.6
 # Reload from disk
             -
                 position: (0.0, 0.5, -0.5)
@@ -85,28 +85,28 @@ FileROM8bit:
                 length: 0.6
         outputs:
             -
-                position: (6.25, 0.5, 1.5)
+                position: (7.0, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (5.65, 0.5, 1.5)
+                position: (6.333, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (5.05, 0.5, 1.5)
+                position: (5.666, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (4.45, 0.5, 1.5)
+                position: (5.0, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (3.85, 0.5, 1.5)
+                position: (4.333, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (3.25, 0.5, 1.5)
+                position: (3.666, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (2.65, 0.5, 1.5)
+                position: (3.0, 0.5, 1.5)
                 rotation: (90, 0, 0)
             -
-                position: (2.05, 0.5, 1.5)
+                position: (2.333, 0.5, 1.5)
                 rotation: (90, 0, 0)
 # EOF 
             -

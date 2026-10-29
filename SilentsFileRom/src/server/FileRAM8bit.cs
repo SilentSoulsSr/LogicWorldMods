@@ -56,12 +56,12 @@ public class FileRAM8bit : LogicComponent<FileRAM8bit.IData>
             _pressed[peg.Key].SetOn(Inputs[peg.Key].On);
 
         bool isValid = _pressed.Where(item => Inputs[item.Key].On).Count() <= 1;
-        if (isValid)
+        if (isValid || _fileData == null)
         {
             if (_pressed[PegInReset].Down)
                 _fileData = new byte[65536];
 
-            if (_pressed[PegInFileLoad].Down)
+            if (_pressed[PegInFileLoad].Down || _fileData == null)
             {
                 string[] files = FileLoader.GetFiles(Data.LabelText);
                 byte[] data = FileLoader.LoadFromFile(files.First());

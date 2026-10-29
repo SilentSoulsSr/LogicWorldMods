@@ -1,0 +1,13 @@
+#######################
+# MSX1 CPU Builder    #
+#######################
+# Click the block to build the test rig, once. No pegs - purely a button.
+
+MsxCpuBuilder:
+    column: "Memory"
+    category: "Modules"
+    prefab:
+        blocks:
+            - Standard
+    clientCode: SilentsMsxCpu.Client.ClientCode.MsxCpuBuilder
+    logicCode: SilentsMsxCpu.Server.LogicCode.MsxCpuBuilder
